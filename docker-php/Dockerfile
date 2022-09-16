@@ -12,4 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /var/www/app
 
-COPY . ./
+COPY ./../ ./
+
+EXPOSE 9000
+
+CMD ["php-fpm"]
