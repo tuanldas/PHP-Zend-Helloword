@@ -2,3 +2,9 @@ services:
   php-fpm:
     build:
       context: ./docker-php
+
+  nginx:
+    build:
+      context: ./docker-nginx
+    ports:
+      - '8080:80'
