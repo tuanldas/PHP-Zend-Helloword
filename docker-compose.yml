@@ -1,12 +1,27 @@
 services:
   php-fpm:
     build:
-      context: ./docker-php
+      context: ./
+      dockerfile: php.dockerfile
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306
 
   nginx:
     build:
       context: ./docker-nginx
     ports:
-      - '8080:80'
+      - '8081:80'
     depends_on:
       - php-fpm
+
+volumes:
+  mariadb:
+    name: mariadb
