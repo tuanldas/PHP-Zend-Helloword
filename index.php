@@ -1,1 +1,1 @@
-das
+<?php echo "Hello world";
